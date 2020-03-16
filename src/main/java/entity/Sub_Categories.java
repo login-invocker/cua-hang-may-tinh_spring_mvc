@@ -1,21 +1,30 @@
 package entity;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-@Entity(name = "sub_categories")
-public class Sub_Categories {
+@Entity(name = "d_sub_categories")
+public class Sub_Categories implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int id_categories;
-	private int id_sub_categoies;
+	private int id_sub_categories;
+	private String name;
+	private String picture;
 	private int create_by;
 	private int update_by;
 	private Timestamp create_at;
@@ -31,17 +40,11 @@ public class Sub_Categories {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getId_categories() {
-		return id_categories;
+	public int getId_sub_categories() {
+		return id_sub_categories;
 	}
-	public void setId_categories(int id_categories) {
-		this.id_categories = id_categories;
-	}
-	public int getId_sub_categoies() {
-		return id_sub_categoies;
-	}
-	public void setId_sub_categoies(int id_sub_categoies) {
-		this.id_sub_categoies = id_sub_categoies;
+	public void setId_sub_categories(int id_sub_categoies) {
+		this.id_sub_categories = id_sub_categoies;
 	}
 	public int getCreate_by() {
 		return create_by;
@@ -72,5 +75,20 @@ public class Sub_Categories {
 	}
 	public void setCategories(Set<Categories> categories) {
 		this.categories = categories;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPicture() {
+		return picture;
+	}
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 }

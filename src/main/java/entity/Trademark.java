@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,9 +17,14 @@ import javax.persistence.OneToMany;
 
 @Entity(name="d_trademark")
 public class Trademark implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Column(name= "name",nullable = false)
 	private String name;
 	private String picture;
 	private int id_trademark;
@@ -28,8 +34,8 @@ public class Trademark implements Serializable{
 	private Timestamp update_at;
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "d_categories_trademark",
-	joinColumns ={@JoinColumn(name="id_trademark",referencedColumnName = "id_trademark")},
-	inverseJoinColumns = {@JoinColumn(name="id_categories",referencedColumnName = "id_categories")})
+	joinColumns =@JoinColumn(name="id_trademark"),
+	inverseJoinColumns = @JoinColumn(name="id_categories"))
 	Set<Categories> categories;
 	public int getId() {
 		return id;

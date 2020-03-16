@@ -27,21 +27,21 @@ public class Categories implements Serializable{
 	private Timestamp update_at;
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "d_categories_trademark",
-	joinColumns ={@JoinColumn(name="id_categories",referencedColumnName = "id_categories")},
-	inverseJoinColumns = {@JoinColumn(name="id_trademark",referencedColumnName = "id_trademark")})
+	joinColumns ={@JoinColumn(name="id_categories")},
+	inverseJoinColumns = {@JoinColumn(name="id_trademark")})
 	Set<Trademark> trademark;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "d_sub_categories_categories",
+	joinColumns ={@JoinColumn(name="id_categories")},
+	inverseJoinColumns = {@JoinColumn(name="id_sub_categories")})
+	Set<Sub_Categories> sub_categories;
 	public Set<Sub_Categories> getSub_categories() {
 		return sub_categories;
 	}
-
 	public void setSub_categories(Set<Sub_Categories> sub_categories) {
 		this.sub_categories = sub_categories;
 	}
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "d_sub_categories_categories",
-	joinColumns ={@JoinColumn(name="id_categories",referencedColumnName = "id_categories")},
-	inverseJoinColumns = {@JoinColumn(name="id_sub_categories",referencedColumnName = "id_sub_categories")})
-	Set<Sub_Categories> sub_categories;
 	public int getId() {
 		return id;
 	}
