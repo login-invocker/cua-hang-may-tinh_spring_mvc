@@ -7,13 +7,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <jsp:include page="./config.jsp"></jsp:include>
+<script >
+$(".agileinfo-nav_search").click(function() {
+	  
+	});
+</script>
 </head>
 <body>
     <div class="row">
         <div class="col-2">
             <div class="float-left">
                 <ul>
-                    <a href=""><li>DashBoard</li></a>
+                    <a href="<c:url value="/addproduct" />"><li>Sản Phẩm</li></a>
                     <a href=""><li>DashBoard</li></a>
                     <a href=""><li>DashBoard</li></a>
                     <a href=""><li>DashBoard</li></a>
@@ -32,17 +37,17 @@
 						<select id="agileinfo-nav_search" name="agileinfo_search" class="border" required="">
 							<option value="">Tất cả các hãng</option>
 							<c:forEach var="brand" items="${listbrand }">
-								<option value="${brand.getName() }">${brand.getName()}</option>
+								<option value="${brand.getId_trademark() }">${brand.getName()}</option>
 							</c:forEach>
 						</select>
 					</form>
 				</div>
 				  <div class="row ">
 					  <div class="col-8 ">
-						  <input type="text" class="form-control" placeholder="name" >
+						  <input type="text" class="form-control" placeholder="name=${signlebrand.getName() }" >
 					  </div>
 					  <div class="col-4">
-						  <input type="text" class="form-control" placeholder="id brand">	
+						  <input type="text" class="form-control" placeholder="id brand=${signlebrand.getId_trademark()} ">	
 					  </div>
 				  </div>
 			 </div>
