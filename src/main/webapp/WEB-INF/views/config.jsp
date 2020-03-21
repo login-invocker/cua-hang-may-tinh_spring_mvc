@@ -53,3 +53,7 @@
 
 	<!-- popup modal (for location)-->
 	<script src="resources/js/jquery.magnific-popup.js"></script>
+	
+	<!-- custom.js -->
+	<<script src="resources/js/custom.js" type="text/javascript"></script>
+	
